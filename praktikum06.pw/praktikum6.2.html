@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="praktikum6.2.css">
+    <title>Praktikum 6.2</title>
+</head>
+<style>
+#container {
+    display: flex;
+    padding: 20px;
+    height: 50vh;
+  }
+  
+  .nav, header, article, aside, footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav {
+    height: 180%;
+    width: 25%;
+    background-color: pink;
+  }
+  
+  .baris {
+    display: flex;
+    height: 100%;
+  }
+  
+  .content {
+    height: 120%;
+    width: 100%;
+  }
+  
+  .header,
+  .footer {
+    height: 50%;
+  }
+  
+  .header,.footer {
+    height: 25%;
+    background-color: khaki;
+  }
+  
+  .article {
+    width: 100%;
+    background-color: beige;
+  }
+  
+  .aside {
+    height: 100%;
+    width: 40%;
+    background-color: rgb(14, 233, 160);
+  }
+  </style>
+<body>
+    <div id="container">
+        <div class="nav">Nav</div>
+        <div class="content">
+            <div class="header">Header</div>
+            <div class="baris">
+                <div class="article">Article</div>
+                <div class="aside">Aside</div>
+            </div>
+            <div class="footer">Footer</div>
+        </div>
+    </div>
+</body>
+</html> 
