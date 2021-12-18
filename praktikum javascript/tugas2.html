@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum10 |tugs2</title>
+</head>
+<style>
+    body {
+        background: rgb(255, 255, 255);
+    }
+
+    .layar {
+        width: 100%;
+        height: 400px;
+        background-color: rgb(253, 253, 253);
+    }
+
+    #box-input {
+        display: grid;
+        height: 50%;
+        align-items: end;
+    }
+
+    #billa {
+        height: 50%;
+    }
+
+    input {
+        width: 99%;
+        height: 50px;
+    }
+
+    button {
+        width: 8%;
+        height: 40px;
+    }
+
+    .result {
+        width: 100%;
+    }
+</style>
+<body>
+    <div class="layar">
+        <div id="billa">
+
+        </div>
+        <div id="box-input">
+            <div id="input">
+                <input type="text" name="message" id="message">
+                <button type="submit" id="submit" onclick="showChat();">Kirim</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script type="text/javascript">
+        function showChat() {
+            var chat = document.getElementById("message").value;
+            var node = document.createElement("div");
+            var textnode = document.createTextNode(chat);
+            node.appendChild(textnode);
+            document.getElementById("billa").appendChild(node);
+        }
+    </script>
+</body>
+</html> 
