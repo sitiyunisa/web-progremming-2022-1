@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script2.js"></script>
+    <title> image picker </title>
+ <body>
+     <div>
+         <h3>Pilihlah Gambar yang Disukai</h3>
+         <br>
+         <br>
+         <table style="border: solid 1px;">
+         <tr>
+             <td>
+                 <select id="hewan" onchange="cetak_gambar()">
+                    <option value="Kucing">Kucing</option>
+                    <option value="Panda">Panda</option>
+                    <option value="gorilla">gorilla</option>
+                    <option value="srigala">srigala</option>
+                    <option value="ular">ular</option>
+                </select>
+             </td>
+         </tr>
+         </table>
+     </div>
+     <br>
+     <br>
+        <div style="width: 100px; height: 100px; border-style: solid 1px;">
+            <img src="" id="gambar">
+        </div>
+     
+ </body>
+ </html>

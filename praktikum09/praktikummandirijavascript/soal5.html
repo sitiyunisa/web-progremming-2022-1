@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Validasi </title>
+
+</head>
+<style>
+   * {
+            padding: 0;
+            margin: 0;
+            font-family: arial;
+        }
+
+        .wrapper-login {
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container-login {
+            background-color: rgb(99, 146, 247);
+            padding: 20px 20px;
+            width: 300px;
+        }
+
+        h1 {
+            color: rgb(55, 52, 41);
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            border: none;
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        button {
+            background-color: rgb(55, 52, 41);
+            border: none;
+            color: rgb(255, 253, 254);
+            padding: 10px 20px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            width: 40%;
+        }
+
+        button:hover {
+            opacity: .5;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 12px;
+            color: #333;
+        }
+
+        #error {
+            text-align: center;
+            position: absolute;
+            top: 15%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            background: rgba(232, 43, 84, 0.755);
+            width: 300px;
+            color: #fff;
+            padding: 20px;
+            display: none;
+        }
+
+        .tampilanError {
+            color: #f00;
+        }
+
+        .container-adm {
+            background-color: rgb(255, 71, 71);
+            padding: 20px;
+        }
+
+        table tr td {
+            padding: 10px;
+        }
+</style>
+<body>
+
+
+    <div id="wrap1" class="wrapper-login">
+        <div class="container-login">
+            <h1>form</h1>
+            <!-- <form> -->
+            <div class="login-input">
+                <div>
+                    <small style="display: none;" id="err1" class="tampilanError">Nama wajib diisi</small>
+                    <small style="display: none;" id="err1_2" class="tampilanError">Nama maksimal 30 karakter!</small>
+                    <input type="text" name="nama" id="nama" placeholder=" Nama Pelanggan* ">
+                </div>
+                <div>
+                    <small style="display: none;" id="err2" class="tampilanError">Email wajib diisi</small>
+                    <small style="display: none;" id="err2_2" class="tampilanError">Format Email tidak sesuai</small>
+                    <input type="email" name="email" id="email" placeholder=" Email* ">
+                </div>
+                <div>
+                    <small style="display: none;" id="err3" class="tampilanError">Jam Keberangkatan wajib diisi</small>
+                    <small style="display: none;" id="err3_2" class="tampilanError">Jam Keberangkatan melebihi
+                        24.00!</small>
+                    <input type="number" name="jam" id="jam" placeholder=" Jam Keberangkatan* ">
+                </div>
+                <div>
+                    <small style="display: none;" id="err4" class="tampilanError">Tujuan Keberangkatan wajib
+                        diisi!</small>
+                    <input type="text" name="tujuan" id="tujuan" placeholder=" Tujuan Keberangkatan*  ">
+                </div>
+                <div>
+                    <small style="display: none;" id="err5" class="tampilanError">Jumlah Tiket wajib diisi</small>
+                    <small style="display: none;" id="err5_2" class="tampilanError">Jumlah Tiket 10!</small>
+                    <input type="number" name="tiket" id="tiket" placeholder=" Jumblah Ticket* ">
+                </div>
+                <button id="kirim" class="send-btn" type="submit" value="kirim" onclick="cekValidasi();">Masuk</button>
+                <div id="error">Username / Password anda salah! <span style="margin-left: 20px; cursor: pointer;"
+                        onclick="closeLah();">&#10005;</span></div>
+            </div>
+            <!-- </form> -->
+        </div>
+    </div>
+
+
+    <div id="wrap2" class="wrapper-login" style="display: none;">
+        <div class="container-adm">
+            <h1>ticket sucses</i></h1>
+            <table>
+                <tbody style="text-align: left; padding: 5px;">
+                    <tr>
+                        <td>Nama Pelanggan</td>
+                        <td id="h_1"></td>
+                    <tr>
+                        <td>Jadwal Keberangkatan</td>
+                        <td id="h_2"></td>
+                    </tr>
+                    <td>Jam Keberangkatan</td>
+                    <td id="h_3"></td>
+                    <tr>
+                        <td>Tujuan Keberangkatan</td>
+                        <td id="h_4"></td>
+                    </tr>
+                    <td>Tiket</td>
+                    <td id="h_5"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script >
+      function cekValidasi() {
+
+// get all input
+var nama = document.getElementById('nama').value;
+var email = document.getElementById('email').value;
+var jam = document.getElementById('jam').value;
+var tujuan = document.getElementById('tujuan').value;
+var tiket = document.getElementById('tiket').value;
+
+var tombol = document.getElementById('kirim').value;
+
+
+if (tombol == 'kirim') {
+
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    var err1 = document.getElementById('err1');
+    var err1_2 = document.getElementById('err1_2');
+    var err2 = document.getElementById('err2');
+    var err2_2 = document.getElementById('err2_2');
+    var err3 = document.getElementById('err3');
+    var err3_2 = document.getElementById('err3_2');
+    var err4 = document.getElementById('err4');
+    var err5 = document.getElementById('err5');
+    var err5_2 = document.getElementById('err5_2');
+
+    var h_1 = document.getElementById('h_1');
+    var h_2 = document.getElementById('h_2');
+    var h_3 = document.getElementById('h_3');
+    var h_4 = document.getElementById('h_4');
+    var h_5 = document.getElementById('h_5');
+
+
+
+    const batasJam = 24.00;
+    const batasNama = 30;
+    const batasTiket = 10;
+
+    var errorNama = [];
+    if (nama.length > 30) {
+        console.log('nama lebih dari 30 karakter');
+        errorNama[0] = err1_2.style.display = 'block';
+    }
+    if (nama == "") {
+        console.log('nama wajib diisi!');
+        errorNama[1] = err1.style.display = 'block';
+    }
+
+    var errorEmail = [];
+    if (!validateEmail(email)) {
+        console.log('email gak sesuai format!')
+        errorEmail[0] = err2_2.style.display = 'block';
+    }
+    if (email == '') {
+        console.log('email wajib diisi!');
+        errorEmail[1] = err2.style.display = 'block';
+    }
+
+    var errorJam = [];
+    if (jam > batasJam) {
+        console.log('jam melebihi 24.00!');
+        errorJam[0] = err3_2.style.display = 'block';
+    }
+    if (jam == '') {
+        console.log('jam wajib diisi!');
+        errorJam[1] = err3.style.display = 'block';
+    }
+
+    var errorTiket = [];
+    if (tiket > batasTiket) {
+        console.log('tiket melebihi 10!');
+        errorTiket[0] = err5_2.style.display = 'block';
+    }
+    if (tiket == '') {
+        console.log('tiket wajib diisi!');
+        errorTiket[1] = err5.style.display = 'block';
+    }
+
+    var errorTujuan = [];
+    if (tujuan == "") {
+        console.log('anda tidak punya tujuan!')
+        errorTujuan[0] = err4.style.display = 'block';
+    }
+
+
+    if (nama != '' && (email != '' && validateEmail(email)) && jam != '' && tujuan != '' && tiket != '') {
+        // window.location.href = "ridho.html";
+
+        h_1.innerHTML = nama;
+        h_2.innerHTML = email;
+        h_3.innerHTML = jam;
+        h_4.innerHTML = tujuan;
+        h_5.innerHTML = tiket;
+
+        var w1 = document.getElementById('wrap1');
+        var w2 = document.getElementById('wrap2');
+
+        w1.style.display = 'none';
+        w2.style.display = 'grid';
+
+    }
+
+
+    // window.location.href = "ridho.html";
+}
+}
+    </script>
+
+</body>
+
+</html>

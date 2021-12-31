@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung Kurs Rupiah</title>
+    <style>
+    .container {
+        margin: 15px;
+    } 
+
+    table {
+        border: 1px solid black;
+    }
+
+    table tr th {
+        background-color: rgb(163, 180, 255); 
+        border: 1px solid black;
+    }
+
+    table tr th,
+    table tr td {
+        padding: 10px; 
+        font-size: 18px;
+        border: 1px solid black;
+    }
+    #rupiah{
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    
+    <div class="container"> 
+        <div class="isi_table">
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>Masukan Nilai</th>
+                        <th>Valas</th>
+                        <th>Nilai Rupiah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>
+                        <input type="number" value="" size="10" id="jumlah_uang">
+                    </td>
+                    <td>
+                        <select onchange="hitung()" id="jenis_valas">
+                            <option></option>
+                            <option id="dollar_us" value="Dollar US">Dollar US</option>
+                            <option id="dollar_singapore" value="Dollar Singapore">Dollar Singapore</option>
+                            <option id="ringgit_malaysia" value="Ringgit Malaysia">Ringgit Malaysia</option>
+                            <option id="yen_jepang" value="Yen Jepang">Yen Jepang</option>
+                            <option id="euro" value="Euro">Euro</option>
+                            <option id="riyal_arab" value="Riyal Arab Saudi">Riyal Arab Saudi</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div id="rupiah">0</div>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+   <script>
+function hitung(){      
+        //ambil inputan
+        var uang = document.getElementById("jumlah_uang").value;
+        var valas = document.getElementById("jenis_valas").value;
+    
+        //mata uang
+        var dollar_us = document.getElementById('dollar_us').value;
+        var dollar_singapore = document.getElementById('dollar_singapore').value;
+        var ringgit_malaysia = document.getElementById('ringgit_malaysia').value;
+        var yen_jepang = document.getElementById('yen_jepang').value;
+        var euro = document.getElementById('euro').value;
+        var riyal_arab = document.getElementById('riyal_arab').value;
+    
+        //hasil rupiah
+        var rupiah = 0;
+        if(valas == "Dollar US"){
+            rupiah = uang * 9915;
+            document.getElementById('rupiah').value = rupiah;
+        }
+        else if(valas == "Dollar Singapore"){
+            rupiah = uang * 13472;
+            document.getElementById('rupiah').value = rupiah;
+        }
+        else if(valas == "Ringgit Malaysia"){
+            rupiah = uang * 874;
+            document.getElementById('rupiah').value = rupiah;
+        }
+        else if(valas == "Yen Jepang"){
+            rupiah = uang * 120;
+            document.getElementById('rupiah').value = rupiah;
+        }
+        else if(valas == "Euro"){
+            rupiah = uang * 15888;
+            document.getElementById('rupiah').value = rupiah;
+        }
+        else{
+            rupiah = uang * 3592;
+            document.getElementById('rupiah').value = rupiah;
+        }
+        let area_hasil = document.getElementById("rupiah");
+        area_hasil.innerHTML = rupiah
+    } 
+   </script>
+</body>
+</html> 
