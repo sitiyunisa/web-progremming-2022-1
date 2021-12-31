@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung Kurs Rupiah</title>
+    <script>
+        function hitung(){
+            let dollar = document.getElementById("dollar").value;
+            let ubah = dollar * 14650
+            document.getElementById('perubahan').value = ubah;
+        }
+
+    </script>
+</head>
+<body>
+    <h3>Kurs Rupiah</h3>
+    Dollar  : <input type="number" value="" size="10" id="dollar" onchange="hitung()">$
+    <br />
+    Rupiah :  <input type='number' id="perubahan" value="0"/>
+</body>
+</html>
